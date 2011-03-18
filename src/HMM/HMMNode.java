@@ -39,6 +39,7 @@ public class HMMNode extends Node<Integer, Character> {
         super(ni);
     }
     
+    @Override
     public void setId(Integer id){
         this.setId(id);
     }

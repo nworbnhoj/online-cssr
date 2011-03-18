@@ -52,7 +52,7 @@ public class HMM  {
     
     /** Sets up an input Stream
      */
-    public void setInput(Reader reader) {
+    public final void setInput(Reader reader) {
         if (reader != null){
             inStream = new BufferedReader(reader);
         }
@@ -61,7 +61,7 @@ public class HMM  {
     
     /** Sets up an output Stream
      */
-    public void setOutput(Writer writer) {
+    public final void setOutput(Writer writer) {
         if (writer != null){
             outStream = new BufferedWriter(writer);
         }

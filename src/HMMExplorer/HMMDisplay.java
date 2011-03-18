@@ -60,6 +60,7 @@ import edu.uci.ics.jung.graph.decorators.EdgeStringer;
 import edu.uci.ics.jung.graph.decorators.VertexPaintFunction;
 import edu.uci.ics.jung.graph.decorators.VertexStrokeFunction;
 import edu.uci.ics.jung.graph.impl.SparseVertex;
+import edu.uci.ics.jung.visualization.AbstractLayout;
 import edu.uci.ics.jung.visualization.GraphZoomScrollPane;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -162,8 +163,9 @@ public class HMMDisplay extends javax.swing.JPanel implements PropertyChangeList
     /**
      * Invoked when task's progress property changes.
      */
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("progress" == evt.getPropertyName()) {
+        if ("progress".equals(evt.getPropertyName())) {
             
         }
     }
@@ -240,13 +242,13 @@ public class HMMDisplay extends javax.swing.JPanel implements PropertyChangeList
      * @return a list of layout classes
      */
     private static Class[] getCombos() {
-        List layouts = new ArrayList();
+        List<Class> layouts = new ArrayList<Class>();
         layouts.add(KKLayout.class);
         layouts.add(FRLayout.class);
         layouts.add(CircleLayout.class);
         layouts.add(SpringLayout.class);
         layouts.add(ISOMLayout.class);
-        return (Class[]) layouts.toArray(new Class[0]);
+        return layouts.toArray(new Class[0]);
     }
     
     

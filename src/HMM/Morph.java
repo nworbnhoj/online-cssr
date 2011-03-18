@@ -20,14 +20,9 @@
 package HMM;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Comparator;
-import java.util.Collections;
 
 /**
  * A Morph is a conditional distribution of the next observable given a history.
@@ -85,7 +80,9 @@ public class Morph {
             } else {
                 return ((double)tally/size);
             }
-        } else return 0;
+        } else {
+            return 0;
+        }
     }
     
       
@@ -109,10 +106,13 @@ public class Morph {
     public int getTally(char ch){
         if (tallies.containsKey(ch)){
             return tallies.get(ch);
-        } else return 0;
+        } else {
+            return 0;
+        }
     }
    
     
+    @Override
     public String toString(){
         String aString = "";
         int ss = sampleSize();
@@ -126,11 +126,6 @@ public class Morph {
         public int compare(Set s1, Set s2) {
             return s2.size() - s1.size();
         }
-    }
-    
-    
-    
-    
-    
+    }    
     
 }

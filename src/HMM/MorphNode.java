@@ -121,6 +121,7 @@ public class MorphNode extends Node<String, Character> {
     }
     
     
+    @Override
     public String toString(){
         String aString = "";
         switch (nodeStatus){

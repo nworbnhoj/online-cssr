@@ -24,7 +24,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+import javax.swing.JFileChooser;
 
 /**
  * HMMStreams is a dialog to allow the selection of the input and output 
@@ -145,7 +145,7 @@ public class HMMStreams extends javax.swing.JDialog {
     private void DestinationSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestinationSelectActionPerformed
         int returnVal = jFileChooser1.showOpenDialog(HMMStreams.this);
         
-        if (returnVal == jFileChooser1.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             File outFile = jFileChooser1.getSelectedFile();
             
             try {
@@ -164,7 +164,7 @@ public class HMMStreams extends javax.swing.JDialog {
     private void SourceSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SourceSelectActionPerformed
         int returnVal = jFileChooser1.showOpenDialog(HMMStreams.this);
         
-        if (returnVal == jFileChooser1.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             File inFile = jFileChooser1.getSelectedFile();
             
             try {
@@ -191,6 +191,7 @@ public class HMMStreams extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HMMStreams(new javax.swing.JFrame(), true).setVisible(true);
             }

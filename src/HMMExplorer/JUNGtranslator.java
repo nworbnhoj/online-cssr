@@ -28,8 +28,6 @@ import edu.uci.ics.jung.graph.impl.SimpleDirectedSparseVertex;
 import edu.uci.ics.jung.graph.impl.DirectedSparseEdge;
 import edu.uci.ics.jung.utils.UserDataContainer.*;
 import edu.uci.ics.jung.utils.*;
-import edu.uci.ics.jung.graph.ArchetypeEdge;
-
 import HMM.*;
 
 
@@ -107,7 +105,7 @@ public class JUNGtranslator {
     
     public static void rebuildTree(String parentNodeId, SimpleDirectedSparseVertex parentVertex, MorphTrie morphTrie){
         
-        if (parentNodeId == ""){
+        if (parentNodeId == null ? "" == null : parentNodeId.equals("")){
             parentVertex = new SimpleDirectedSparseVertex();
             parentVertex = embelishVertex("", parentVertex, morphTrie);
             tree = new SparseTree(parentVertex);
@@ -154,9 +152,15 @@ public class JUNGtranslator {
         vertex.addUserDatum("size", morph.sampleSize(), new UserDataContainer.CopyAction.Clone());
         vertex.addUserDatum("stateId", node.getStateId(), new UserDataContainer.CopyAction.Clone());
         String morphStatus = "state";
-        if (node.isIdle()) morphStatus = "idle";
-        if (node.isSuffiX()) morphStatus = "SuffiX";
-        if (node.isFamily()) morphStatus = "family";
+        if (node.isIdle()) {
+            morphStatus = "idle";
+        }
+        if (node.isSuffiX()) {
+            morphStatus = "SuffiX";
+        }
+        if (node.isFamily()) {
+            morphStatus = "family";
+        }
         vertex.addUserDatum("morphStatus", morphStatus, new UserDataContainer.CopyAction.Clone());
         vertex.addUserDatum("sortby", node.getId(), new UserDataContainer.CopyAction.Clone());
         return vertex;

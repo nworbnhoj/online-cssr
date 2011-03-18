@@ -20,6 +20,7 @@
 package HMMExplorer;
 
 import java.io.*;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -130,7 +131,7 @@ public class HMMExplorer extends javax.swing.JFrame {
     
     private void OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenActionPerformed
         int returnVal = jFileChooser1.showOpenDialog(HMMExplorer.this);
-        if (returnVal == jFileChooser1.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = jFileChooser1.getSelectedFile();
            
  // this needs to be coded to read in a whole HMM from file           
@@ -157,6 +158,7 @@ public class HMMExplorer extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HMMExplorer().setVisible(true);
             }

@@ -20,12 +20,9 @@
 package HMMExplorer;
 
 import HMM.*;
-import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.util.Vector;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,10 +41,12 @@ public class MorphJTrie extends MorphTrie implements TreeModel {
     }
     
     
+    @Override
     public void addTreeModelListener(TreeModelListener l) {
         treeModelListeners.add(l);
     }
     
+    @Override
     public Object getChild(Object parent, int index) {
         MorphNode parentMorphNode = (MorphNode) parent;
         List<Character> linkIds = new ArrayList<Character>();
@@ -58,14 +57,18 @@ public class MorphJTrie extends MorphTrie implements TreeModel {
         return this.getNode(childMorphNodeId);
     }
     
+    @Override
     public int getChildCount(Object parent) {
         MorphNode node = (MorphNode) parent;
         return node.getChildren().size();
     }
     
     
+    @Override
     public int getIndexOfChild(Object parent, Object child) {
-        if ((parent == null) || (child == null)) return -1;
+        if ((parent == null) || (child == null)) {
+            return -1;
+        }
         
         MorphNode parentMorphNode = (MorphNode) parent;
         MorphNode childMorphNode = (MorphNode) child;
@@ -88,23 +91,31 @@ public class MorphJTrie extends MorphTrie implements TreeModel {
     }
     
     
+    @Override
     public Object getRoot() {
         return this.getNode("");
     }
     
     
+    @Override
     public boolean isLeaf(Object node) {
         MorphNode morphNode = (MorphNode) node;
-        if (morphNode.getChildren().size() == 0) return true;
-        else return false;
+        if (morphNode.getChildren().isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
     
+    @Override
     public void removeTreeModelListener(TreeModelListener l) {
         treeModelListeners.remove(l);
     }
     
     
+    @Override
     public void valueForPathChanged(TreePath path, Object newValue) {
         System.out.println("*** valueForPathChanged : "
                            + path + " --> " + newValue);

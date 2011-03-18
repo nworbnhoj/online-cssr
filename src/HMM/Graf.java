@@ -72,7 +72,7 @@ public class Graf<N extends Node<NI, LI>, NI, LI> {
     }
     
     
-    public void removeNode(Integer stateId){
+    public void removeNode(NI stateId){
         nodes.remove(stateId);
     }
     

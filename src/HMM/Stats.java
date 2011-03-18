@@ -58,16 +58,24 @@ public class Stats {
         d=0.0;
         
         while (j1<=n1 && j2<=n2){
-            if((d1=data1.get(j1-1)) <= (d2=data2.get(j2-1))) fn1=j1++/en1;
-            if(d2 <= d1) fn2=j2++/en2;
-            if((dt=Math.abs(fn2-fn1)) > d) d=dt;
+            if((d1=data1.get(j1-1)) <= (d2=data2.get(j2-1))) {
+                fn1 = j1++ / en1;
+            }
+            if(d2 <= d1) {
+                fn2 = j2++ / en2;
+            }
+            if((dt=Math.abs(fn2-fn1)) > d) {
+                d = dt;
+            }
         }
         
         en = (en1*en2/(en1 + en2));
         sen=Math.sqrt(en);
         qest = (sen+0.12+0.11/sen) * d;
         
-        if (d==0) return 1;
+        if (d==0) {
+            return 1;
+        }
         if (en >= 4){
             return qest;
         } else { // refine the estimate
@@ -92,8 +100,9 @@ public class Stats {
         for (j=1; j <= 100; j++) {
             term = fac* Math.exp(a2*j*j);
             sum += term;
-            if (Math.abs(term) <= EPS1*termbf || Math.abs(term) <= EPS2*sum)
+            if (Math.abs(term) <= EPS1*termbf || Math.abs(term) <= EPS2*sum) {
                 return sum;
+            }
             fac = -fac;
             termbf = Math.abs(term);
         }
@@ -132,15 +141,24 @@ public class Stats {
         double ratio1;
         double ratio2;
         
-        if(n1 > 0) ratio1 = (double) Math.sqrt(((double) n2)/((double)n1));
-        else ratio1 = 0.0;
+        if(n1 > 0) {
+            ratio1 = Math.sqrt(((double) n2) / ((double) n1));
+        }
+        else {
+            ratio1 = 0.0;
+        }
         
-        if(n2 > 0) ratio2 = (double) Math.sqrt(((double) n1)/((double)n2));
-        else ratio2 = 0.0;
+        if(n2 > 0) {
+            ratio2 = Math.sqrt(((double) n1) / ((double) n2));
+        }
+        else {
+            ratio2 = 0.0;
+        }
         
         for (j = 0; j < nbins; j++) {
-            if(bins1.get(j) == 0.0 && bins2.get(j) == 0.0)
-                --(df);		//No data means one less degree of freedom
+            if(bins1.get(j) == 0.0 && bins2.get(j) == 0.0) {
+                --(df);
+            }		//No data means one less degree of freedom
             else {
                 temp = ratio1*bins1.get(j) - ratio2*bins2.get(j);
                 chsq += temp*temp/(bins1.get(j)+bins2.get(j));
@@ -230,17 +248,20 @@ public class Stats {
             an = -i*(i - a);
             b += 2.0;      //Set up for evaluating continued
             d = an*d + b;  //fraction by modified Lentz's method with b_0 = 0.
-            if(Math.abs(d) < FPMIN)
+            if(Math.abs(d) < FPMIN) {
                 d = FPMIN;
+            }
             c = b + an/c;
-            if(Math.abs(c) < FPMIN)
+            if(Math.abs(c) < FPMIN) {
                 c = FPMIN;
+            }
             d = 1.0/d;
             del = d*c;
             h *= del;
             
-            if(Math.abs(del - 1.0) < EPS)
+            if(Math.abs(del - 1.0) < EPS) {
                 break;
+            }
         }
         if (i > ITMAX){
             // nerror("a too large, ITMAX too small in continued fraction gamma function");
@@ -271,8 +292,9 @@ public class Stats {
         tmp -= (x + 0.5)*Math.log(tmp);
         ser = 1.000000000190015;
         
-        for(j = 0; j <= 5; j++)
-            ser += cof[j]/++y;
+        for(j = 0; j <= 5; j++) {
+            ser += cof[j] / ++y;
+        }
         return -tmp + Math.log(2.5066282746310005*ser/x);
     }
     
