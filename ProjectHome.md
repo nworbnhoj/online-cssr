@@ -1,0 +1,1 @@
+An algorithm which implements the method of nonlinear prediction of discrete random sequences proposed by Shalizi. The algorithm is designed to construct and refine a Hidden Markov model under minimal structural assumptions “online” as each new observation becomes available. This algorithm offers improved time complexity compared to the original CSSR algorithm.
